@@ -1,0 +1,15 @@
+﻿global using System.Threading;
+global using Xunit;
+global using System.Threading.Tasks;
+global using System.Linq;
+global using FluentValidation;
+global using Application.Common.Interfaces;
+global using Application.UnitTests.Helpers;
+global using Application.Pins.Commands;
+global using Microsoft.EntityFrameworkCore;
+global using System;
+global using Infrastructure.Persistence;
+global using Application.Transportations.Commands;
+global using Domain.Entities;
+global using AutoMapper;
+global using Application.Transportations.Queries;

@@ -1,0 +1,10 @@
+﻿global using Application.Transportations.Commands;
+global using Application.Transportations.Queries;
+global using Microsoft.AspNetCore.Mvc;
+global using Trd.Common.Dtos;
+global using Application.Routes.Commands;
+global using Application.Pins.Commands;
+global using Application;
+global using Infrastructure;
+global using MatBlazor;
+global using WebUI.Data;
