@@ -27,7 +27,6 @@ class DataSourceHelper
             Id = 1,
             Code = "100",
             Description = "A1-100",
-            Region = Domain.Enums.Region.Limassol
         });
 
         context.TransportationLocations.AddRange

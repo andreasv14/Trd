@@ -1,15 +1,10 @@
-﻿using Application.Common.Interfaces;
-using Domain.Enums;
-
-namespace Application.Transportations.Commands;
+﻿namespace Application.Transportations.Commands;
 
 public class CreateTransportationCommand : IRequest<int>
 {
     public string Code { get; set; }
 
     public string Description { get; set; }
-
-    public Region Region { get; set; }
 }
 
 public class CreateTransportationCommandHandler : IRequestHandler<CreateTransportationCommand, int>
@@ -38,7 +33,6 @@ public class CreateTransportationCommandHandler : IRequestHandler<CreateTranspor
         {
             Code = request.Code,
             Description = request.Description,
-            Region = 0,
         };
 
 

@@ -16,7 +16,6 @@ public class CreateTransportationCommandHandlerTests
         {
             Code = code,
             Description = "A11",
-            Region = Domain.Enums.Region.Limassol
         };
 
         await Assert.ThrowsAsync<ValidationException>(async () => await createTransportationCommandHandler.Handle(command, new System.Threading.CancellationToken()));
@@ -36,7 +35,6 @@ public class CreateTransportationCommandHandlerTests
         {
             Code = "A100",
             Description = description,
-            Region = Domain.Enums.Region.Limassol
         };
 
         await Assert.ThrowsAsync<ValidationException>(async () =>
@@ -56,7 +54,6 @@ public class CreateTransportationCommandHandlerTests
         {
             Code = "A100",
             Description = "A100 - Limassol",
-            Region = Domain.Enums.Region.Limassol
         };
 
         await createTransportationCommandHandler.Handle(command, new System.Threading.CancellationToken());

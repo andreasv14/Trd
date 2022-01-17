@@ -87,9 +87,6 @@ namespace Infrastructure.Persistence
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Region")
-                        .HasColumnType("int");
-
                     b.Property<int?>("RouteId")
                         .HasColumnType("int");
 

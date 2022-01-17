@@ -4,6 +4,6 @@ public class TransportationProfile : Profile
 {
     public TransportationProfile()
     {
-        CreateMap<Domain.Entities.Transportation, TransportationDto>();
+        CreateMap<Domain.Entities.Transportation, TransportationDto>().ReverseMap();
     }
 }
