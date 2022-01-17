@@ -1,0 +1,85 @@
+﻿@page "/transportations"
+
+@inject IMediator Mediator
+
+<PageTitle>Transportations</PageTitle>
+
+<h3>Transportations</h3>
+
+<div>
+    <MatButton OnClick="@AddNewTransportation" Raised="true">Add</MatButton>
+</div>
+
+<TransportationDetails DialogIsOpen=@_dialogIsOpen Transportation=@_transportation />
+
+<MatTable Items="@_transportations" AllowSelection="true" SelectionChanged="SelectionChangedEvent" OnRowDbClick="OnSelectedDbClicked" class="mat-elevation-z5">
+    <MatTableHeader>
+        <th>Id</th>
+        <th>Code</th>
+        <th>Description</th>
+    </MatTableHeader>
+    <MatTableRow>
+        <td>@context.Id</td>
+        <td>@context.Code</td>
+        <td>@context.Description</td>
+    </MatTableRow>
+</MatTable>
+
+@code
+{
+    #region Private methods
+
+    private IEnumerable<TransportationDto> _transportations = new List<TransportationDto>();
+
+    private TransportationDto _transportation = new TransportationDto();
+
+    private bool _dialogIsOpen = false;
+
+    #endregion
+
+    #region Protected methods
+
+    protected override async Task OnInitializedAsync()
+    {
+        _transportations = await Mediator.Send(new GetTransportationsQuery());
+    }
+
+    #endregion
+
+    #region Private methods
+
+    private void AddNewTransportation()
+    {
+        _dialogIsOpen = true;
+
+        _transportation = new TransportationDto();
+    }
+
+    private void SelectionChangedEvent(object row)
+    {
+        if (row == null)
+        {
+            _transportation = new TransportationDto();
+        }
+        else
+        {
+            _transportation = (TransportationDto)row;
+        }
+
+        this.StateHasChanged();
+    }
+
+    private void OnSelectedDbClicked(object item)
+    {
+        var selectedTransportation = item as TransportationDto;
+        if (selectedTransportation == null)
+        {
+            return;
+        }
+
+        _transportation = selectedTransportation;
+        _dialogIsOpen = true;
+    }
+
+    #endregion
+}

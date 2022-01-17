@@ -1,0 +1,50 @@
+﻿@inject IMediator Mediator
+
+<MatDialog @bind-IsOpen="@DialogIsOpen">
+    <MatDialogTitle>Transportation</MatDialogTitle>
+
+    <MatDialogContent>
+        <p>Register new transportation</p>
+
+        <div class="mat-layout-grid-cell mat-layout-grid-cell-span-4">
+            <p>
+                <MatTextField Label="Code" @bind-Value="Transportation.Code" />
+            </p>
+            <p>
+                <MatTextField Label="Description" @bind-Value="Transportation.Description" />
+            </p>
+        </div>
+    </MatDialogContent>
+    <MatDialogActions>
+        <MatButton OnClick="@(e => { DialogIsOpen = false; })">Cancel</MatButton>
+        <MatButton OnClick="@OnSave">Save</MatButton>
+    </MatDialogActions>
+</MatDialog>
+
+@code
+{
+    #region Parameters
+
+    [Parameter]
+    public bool DialogIsOpen { get; set; };
+
+    [Parameter]
+    public TransportationDto Transportation { get; set; } = new TransportationDto();
+
+    #endregion
+
+    #region private methods
+
+    private async Task OnSave()
+    {
+        DialogIsOpen = false;
+
+        await Mediator.Send(new CreateTransportationCommand
+            {
+                Code = Transportation.Code,
+                Description = Transportation.Description
+            });
+    }
+
+    #endregion
+}
