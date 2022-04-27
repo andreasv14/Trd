@@ -4,18 +4,16 @@ using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Infrastructure.Persistence
+namespace Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220117102435_RemoveTransportationRegionProperty")]
-    partial class RemoveTransportationRegionProperty
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,7 +22,7 @@ namespace Infrastructure.Persistence
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Domain.Entities.PinPointLocation", b =>
+            modelBuilder.Entity("Domain.Entities.BusStopLocation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,6 +46,9 @@ namespace Infrastructure.Persistence
 
                     b.Property<int?>("RouteId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -92,6 +93,9 @@ namespace Infrastructure.Persistence
                     b.Property<int?>("RouteId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("RouteId");
@@ -126,7 +130,7 @@ namespace Infrastructure.Persistence
                     b.ToTable("TransportationLocations");
                 });
 
-            modelBuilder.Entity("Domain.Entities.PinPointLocation", b =>
+            modelBuilder.Entity("Domain.Entities.BusStopLocation", b =>
                 {
                     b.HasOne("Domain.Entities.Route", null)
                         .WithMany("PinPointLocations")

@@ -5,7 +5,7 @@
 public class PinPointLocationsController : ApiControllerBase
 {
     [HttpPost]
-    public async Task<ActionResult> CreatePinPointLocation([FromBody] CreatePinPointLocationCommand command)
+    public async Task<ActionResult> CreatePinPointLocation([FromBody] CreateBusStopLocationCommand command)
     {
         try
         {

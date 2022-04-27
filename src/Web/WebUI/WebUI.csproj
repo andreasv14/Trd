@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Filters\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MatBlazor" Version="2.8.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
       <PrivateAssets>all</PrivateAssets>

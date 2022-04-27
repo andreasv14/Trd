@@ -16,7 +16,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     public DbSet<TransportationLocation> TransportationLocations { get; set; }
 
-    public DbSet<PinPointLocation> PinPointLocations { get; set; }
+    public DbSet<BusStopLocation> PinPointLocations { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

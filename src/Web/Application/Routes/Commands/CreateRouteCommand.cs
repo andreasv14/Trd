@@ -7,7 +7,7 @@ public class CreateRouteCommand : IRequest<int>
 {
     public string Description { get; set; }
 
-    public List<PinPointLocation> PinPointLocations { get; set; } = new List<PinPointLocation>();
+    public List<BusStopLocation> PinPointLocations { get; set; } = new List<BusStopLocation>();
 }
 
 public class CreateRouteCommandHandler : IRequestHandler<CreateRouteCommand, int>
@@ -28,7 +28,7 @@ public class CreateRouteCommandHandler : IRequestHandler<CreateRouteCommand, int
 
         foreach (var pinLocation in request.PinPointLocations)
         {
-            newRoute.PinPointLocations.Add(new PinPointLocation { Latitude = pinLocation.Latitude, Longitude = pinLocation.Longitude });
+            newRoute.PinPointLocations.Add(new BusStopLocation { Latitude = pinLocation.Latitude, Longitude = pinLocation.Longitude });
         }
 
         await _context.Routes.AddAsync(newRoute);

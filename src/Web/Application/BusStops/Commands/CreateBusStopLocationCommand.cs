@@ -1,6 +1,6 @@
 ﻿namespace Application.Pins.Commands;
 
-public class CreatePinPointLocationCommand : IRequest<int>
+public class CreateBusStopLocationCommand : IRequest<int>
 {
     public string Code { get; set; }
 
@@ -11,16 +11,16 @@ public class CreatePinPointLocationCommand : IRequest<int>
     public long Longitude { get; set; }
 }
 
-public class CreatePinPointLocationCommandHandler : IRequestHandler<CreatePinPointLocationCommand, int>
+public class CreateBusStopLocationCommandHandler : IRequestHandler<CreateBusStopLocationCommand, int>
 {
     private readonly IApplicationDbContext _context;
 
-    public CreatePinPointLocationCommandHandler(IApplicationDbContext context)
+    public CreateBusStopLocationCommandHandler(IApplicationDbContext context)
     {
         _context = context;
     }
 
-    public async Task<int> Handle(CreatePinPointLocationCommand request, CancellationToken cancellationToken)
+    public async Task<int> Handle(CreateBusStopLocationCommand request, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(request.Code))
         {
@@ -32,7 +32,7 @@ public class CreatePinPointLocationCommandHandler : IRequestHandler<CreatePinPoi
             throw new ValidationException("Description is null or empty");
         }
 
-        var newPinPointLocation = new PinPointLocation()
+        var newPinPointLocation = new BusStopLocation()
         {
             Code = request.Code,
             Description = request.Description,

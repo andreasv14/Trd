@@ -6,5 +6,5 @@ public class Route
 
     public string Description { get; set; }
 
-    public ICollection<PinPointLocation> PinPointLocations { get; } = new HashSet<PinPointLocation>();
+    public ICollection<BusStopLocation> PinPointLocations { get; } = new HashSet<BusStopLocation>();
 }

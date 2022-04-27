@@ -1,8 +1,10 @@
 ﻿namespace Domain.Entities;
 
-public class PinPointLocation
+public class BusStopLocation
 {
     public int Id { get; set; }
+
+    public DateTime Timestamp { get; set; } = DateTime.Now;
 
     public string Code { get; set; }
 

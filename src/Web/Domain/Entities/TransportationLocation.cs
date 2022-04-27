@@ -4,7 +4,7 @@ public class TransportationLocation
 {
     public int Id { get; set; }
 
-    public DateTime Timestamp { get; set; }
+    public DateTime Timestamp { get; set; } = DateTime.Now;
 
     public int TransportationId { get; set; }
     public Transportation Transportation { get; set; }

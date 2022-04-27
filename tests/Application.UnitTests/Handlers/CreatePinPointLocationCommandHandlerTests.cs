@@ -14,7 +14,7 @@ public class CreatePinPointLocationCommandHandlerTests
     [Fact]
     public async Task Handle_PinPointLocationIsValid_AddPinPointLocationIntoDataCollection()
     {
-        var request = new CreatePinPointLocationCommand()
+        var request = new CreateBusStopLocationCommand()
         {
             Code = "10",
             Description = "Aiolou",
@@ -22,7 +22,7 @@ public class CreatePinPointLocationCommandHandlerTests
             Longitude = 20,
         };
 
-        var createPinPointLocationCommandHandler = new CreatePinPointLocationCommandHandler(_context);
+        var createPinPointLocationCommandHandler = new CreateBusStopLocationCommandHandler(_context);
 
         await createPinPointLocationCommandHandler.Handle(request, new CancellationToken());
 
@@ -35,7 +35,7 @@ public class CreatePinPointLocationCommandHandlerTests
     [InlineData(null)]
     public async Task Handle_PinPointLocationCodeIsNullOrEmpty_ThrowsValidationException(string code)
     {
-        var request = new CreatePinPointLocationCommand()
+        var request = new CreateBusStopLocationCommand()
         {
             Code = code,
             Description = "Aiolou",
@@ -43,7 +43,7 @@ public class CreatePinPointLocationCommandHandlerTests
             Longitude = 20,
         };
 
-        var createPinPointLocationCommandHandler = new CreatePinPointLocationCommandHandler(_context);
+        var createPinPointLocationCommandHandler = new CreateBusStopLocationCommandHandler(_context);
 
         await Assert.ThrowsAsync<ValidationException>(async () =>
         {
@@ -57,7 +57,7 @@ public class CreatePinPointLocationCommandHandlerTests
     [InlineData(null)]
     public async Task Handle_PinPointLocationDescriptionIsNullOrEmpty_ThrowsValidationException(string desciption)
     {
-        var request = new CreatePinPointLocationCommand()
+        var request = new CreateBusStopLocationCommand()
         {
             Code = "10",
             Description = desciption,
@@ -65,7 +65,7 @@ public class CreatePinPointLocationCommandHandlerTests
             Longitude = 20,
         };
 
-        var createPinPointLocationCommandHandler = new CreatePinPointLocationCommandHandler(_context);
+        var createPinPointLocationCommandHandler = new CreateBusStopLocationCommandHandler(_context);
 
         await Assert.ThrowsAsync<ValidationException>(async () =>
         {
